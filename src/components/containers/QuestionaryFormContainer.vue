@@ -1,25 +1,14 @@
 <template>
     <p v-for="keyword in keywords">
         <Keyword :keyword=keyword />
-        <Impression
-            :impression="'Good'"
-            @click="select(keyword, 'Good')"
-        />
-        <Impression
-            :impression="'Flat'"
-            @click="select(keyword, 'Flat')"
-        />
-        <Impression
-            :impression="'Bad'"
-            @click="select(keyword, 'Bad')"
-        />
+        <ImpressionsContainer />
     </p>
     <SubmitButton/>
 </template>
 
 <script setup lang="ts">
 import Keyword from "../presentationals/keyword.vue";
-import Impression from "../presentationals/Impression.vue";
+import ImpressionsContainer from "./ImpressionsContainer.vue";
 import SubmitButton from "../presentationals/SubmitButton.vue";
 import { questionaryStore } from "../../stores/questionaryStore";
 import type { Impression as ImpressionType } from "../../types/Impression";
