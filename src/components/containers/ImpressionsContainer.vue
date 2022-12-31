@@ -17,9 +17,11 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { reactive } from "vue";
 import Impression from "../presentationals/Impression.vue";
 import type { Impression as ImpressionType } from "../../types/Impression";
+
+const emmit = defineEmits<{(e: 'selected', impression: ImpressionType): void}>();
 
 const selectionState = reactive({
     'Good': false,
@@ -32,6 +34,8 @@ const clicked = (impression: ImpressionType) => {
     selectionState.Flat = false;
     selectionState.Bad = false;
     selectionState[impression] = true;
+
+    emmit('selected', impression);
 };
 </script>
 

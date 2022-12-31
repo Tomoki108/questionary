@@ -1,7 +1,7 @@
 <template>
     <p v-for="keyword in keywords">
         <Keyword :keyword=keyword />
-        <ImpressionsContainer />
+        <ImpressionsContainer @selected="select(keyword, $event)"/>
     </p>
     <SubmitButton/>
 </template>
@@ -23,6 +23,7 @@ const props = withDefaults(
 );
 
 const store = questionaryStore();
+store.setNmberOfKeyword(4);
 
 const select = (keyword: string, impression: ImpressionType) => {
     store.select(keyword, impression);
