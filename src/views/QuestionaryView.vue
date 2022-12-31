@@ -1,9 +1,13 @@
+<script setup lang="ts">
+import QuestionaryFormContainer from "../components/containers/QuestionaryFormContainer.vue";
+</script>
+
 <template>
-    <div>
-      <h1>This is an Questionary page</h1>
-    </div>
-  </template>
+  <main>
+    <QuestionaryFormContainer />
+  </main>
+</template>
   
-  <style>
-  </style>
+<style>
+</style>
   

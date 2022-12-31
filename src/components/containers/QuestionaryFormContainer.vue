@@ -1,10 +1,10 @@
 <template>
-      <li v-for="keyword in keywords">
-        <Keyword/>
+    <p v-for="keyword in keywords">
+        <Keyword :keyword=keyword />
         <Impression/>
         <Impression/>
         <Impression/>
-    </li>
+    </p>
     <SubmitButton/>
 </template>
 
@@ -14,7 +14,7 @@ import Impression from "../presentationals/Impression.vue";
 import SubmitButton from "../presentationals/SubmitButton.vue";
 
 export interface Props {
-    keywords: string[]
+    keywords?: string[]
 }
 
 const props = withDefaults(
