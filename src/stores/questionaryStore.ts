@@ -2,6 +2,8 @@ import { defineStore } from "pinia";
 import type { Impression } from "../types/Impression";
 
 export const questionaryStore = defineStore("questionaryStore", {
+
+
      state: () => (
         {   
             numberOfKeyword: 0 as number,
@@ -11,6 +13,11 @@ export const questionaryStore = defineStore("questionaryStore", {
         }
 
     ),
+    getters: {
+        isAllSelected: (state): boolean => {
+            return Object.keys(state.selections).length === state.numberOfKeyword
+        }
+    },
      actions: {
         setNmberOfKeyword(numberOfKeyword: number) {
             this.numberOfKeyword = numberOfKeyword;

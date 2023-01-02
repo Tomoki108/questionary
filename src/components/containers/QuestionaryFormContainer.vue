@@ -3,7 +3,7 @@
         <Keyword :keyword=keyword />
         <ImpressionsContainer @selected="select(keyword, $event)"/>
     </p>
-    <SubmitButton/>
+    <SubmitButton :disabled="!store.isAllSelected"/>
 </template>
 
 <script setup lang="ts">
@@ -12,6 +12,7 @@ import ImpressionsContainer from "./ImpressionsContainer.vue";
 import SubmitButton from "../presentationals/SubmitButton.vue";
 import { questionaryStore } from "../../stores/questionaryStore";
 import type { Impression as ImpressionType } from "../../types/Impression";
+import { computed } from "@vue/reactivity";
 
 export interface Props {
     keywords?: string[]
