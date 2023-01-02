@@ -1,7 +1,7 @@
 <template>
-    <button :disabled="disabled">Send</button>
+  <button :disabled="disabled">Send</button>
 </template>
 
 <script setup lang="ts">
-defineProps<{disabled: boolean}>();
+defineProps<{ disabled: boolean }>();
 </script>

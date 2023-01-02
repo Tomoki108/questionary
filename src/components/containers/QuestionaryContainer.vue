@@ -1,12 +1,12 @@
 <template>
-    <main>
-        <template v-for="keyword in keywords">
-            <Keyword :keyword=keyword />
-            <ImpressionsContainer @selected="select(keyword, $event)"/>
-            <br>
-        </template>
-        <SubmitButton :disabled="!store.isAllSelected" @click="submit"/>
-    </main>
+  <main>
+    <template v-for="keyword in keywords">
+      <Keyword :keyword="keyword" />
+      <ImpressionsContainer @selected="select(keyword, $event)" />
+      <br />
+    </template>
+    <SubmitButton :disabled="!store.isAllSelected" @click="submit" />
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -16,19 +16,19 @@ import SubmitButton from "../presentationals/SubmitButton.vue";
 import { questionaryStore } from "../../stores/questionaryStore";
 import type { Impression as ImpressionType } from "../../types/types";
 
-const props = defineProps<{keywords: string[]}>();
+const props = defineProps<{ keywords: string[] }>();
 
 const store = questionaryStore();
 store.setNmberOfKeyword(props.keywords.length);
 
 const select = (keyword: string, impression: ImpressionType) => {
-    store.select(keyword, impression);
+  store.select(keyword, impression);
 };
 
 const submit = (): void => {
-    let message = 'youre answer is submitted: ';
-    message += JSON.stringify(store.selections);
+  let message = "youre answer is submitted: ";
+  message += JSON.stringify(store.selections);
 
-    window.alert(message);
+  window.alert(message);
 };
 </script>

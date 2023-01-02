@@ -14,7 +14,7 @@ import About from "./components/presentationals/About.vue";
     />
 
     <div class="wrapper">
-      <About/>
+      <About />
       <nav>
         <RouterLink to="/questionary/animal">Questionary Animal</RouterLink>
         <RouterLink to="/questionary/car">Questionary Car</RouterLink>
