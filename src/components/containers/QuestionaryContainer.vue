@@ -1,9 +1,10 @@
 <template>
     <main>
-        <p v-for="keyword in keywords">
+        <template v-for="keyword in keywords">
             <Keyword :keyword=keyword />
             <ImpressionsContainer @selected="select(keyword, $event)"/>
-        </p>
+            <br>
+        </template>
         <SubmitButton :disabled="!store.isAllSelected" @click="submit"/>
     </main>
 </template>

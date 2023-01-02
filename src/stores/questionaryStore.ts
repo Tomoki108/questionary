@@ -1,9 +1,7 @@
 import { defineStore } from "pinia";
-import type { Impression } from "../types/Impression";
+import type { Impression } from "../types/types";
 
 export const questionaryStore = defineStore("questionaryStore", {
-
-
      state: () => (
         {   
             numberOfKeyword: 0 as number,

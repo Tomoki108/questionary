@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 import Impression from "../presentationals/Impression.vue";
-import type { Impression as ImpressionType } from "../../types/Impression";
+import type { Impression as ImpressionType } from "../../types/types";
 
 const emmit = defineEmits<{(e: 'selected', impression: ImpressionType): void}>();
 
