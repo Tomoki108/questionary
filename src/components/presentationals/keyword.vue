@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ keyword: string }>();
+defineProps<{ keyword: string }>();
 </script>
 
 <style scoped>

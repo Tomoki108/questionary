@@ -1,6 +1,6 @@
 <template>
   <main>
-    <template v-for="keyword in keywords">
+    <template v-for="(keyword, index) in keywords" :key="index">
       <Keyword :keyword="keyword" />
       <ImpressionsContainer @selected="select(keyword, $event)" />
       <br />
