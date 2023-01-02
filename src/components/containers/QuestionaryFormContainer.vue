@@ -3,7 +3,7 @@
         <Keyword :keyword=keyword />
         <ImpressionsContainer @selected="select(keyword, $event)"/>
     </p>
-    <SubmitButton :disabled="!store.isAllSelected"/>
+    <SubmitButton :disabled="!store.isAllSelected" @click="submit"/>
 </template>
 
 <script setup lang="ts">
@@ -12,13 +12,11 @@ import ImpressionsContainer from "./ImpressionsContainer.vue";
 import SubmitButton from "../presentationals/SubmitButton.vue";
 import { questionaryStore } from "../../stores/questionaryStore";
 import type { Impression as ImpressionType } from "../../types/Impression";
-import { computed } from "@vue/reactivity";
 
 export interface Props {
     keywords?: string[]
 }
-
-const props = withDefaults(
+withDefaults(
     defineProps<Props>(),
     { keywords: () => ['Dog', 'Cat', 'Human', 'Wombat'] }
 );
@@ -29,5 +27,11 @@ store.setNmberOfKeyword(4);
 const select = (keyword: string, impression: ImpressionType) => {
     store.select(keyword, impression);
 };
-</script>
 
+const submit = (): void => {
+    let message = 'youre answer is submitted: ';
+    message += JSON.stringify(store.selections);
+
+    window.alert(message);
+};
+</script>
