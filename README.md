@@ -1,6 +1,7 @@
 # Abstruct
 A simple questionary app for Vue3 (Composition API) and typescript practice.
 
+![demo](https://github.com/Tomoki108/questionary/blob/main/demo.gif?raw=true)
 
 
 
