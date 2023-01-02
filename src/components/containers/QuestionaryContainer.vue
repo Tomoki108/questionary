@@ -32,8 +32,8 @@ const select = (
 };
 
 const submit = (): void => {
-  let message = "youre answer is submitted: ";
-  message += JSON.stringify(store.selections);
+  let message = "youre answer is submitted. (Backend is not implemented.😇) \n";
+  message += JSON.stringify(store.selections[props.questionary], null, 1);
 
   window.alert(message);
 };
