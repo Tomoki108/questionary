@@ -2,10 +2,13 @@
   <main>
     <template v-for="(keyword, index) in keywords" :key="index">
       <Keyword :keyword="keyword" />
-      <ImpressionsContainer @selected="select(keyword, $event)" />
+      <ImpressionsContainer
+        :selected="store.getSelected(questionary, keyword)"
+        @selected="select(questionary, keyword, $event)"
+      />
       <br />
     </template>
-    <SubmitButton :disabled="!store.isAllSelected" @click="submit" />
+    <SubmitButton :disabled="!store.isAllSelected(questionary, keywords.length)" @click="submit"/>
   </main>
 </template>
 
@@ -16,13 +19,16 @@ import SubmitButton from "../presentationals/SubmitButton.vue";
 import { questionaryStore } from "../../stores/questionaryStore";
 import type { Impression as ImpressionType } from "../../types/types";
 
-const props = defineProps<{ keywords: string[] }>();
+const props = defineProps<{ questionary: string, keywords: string[] }>();
 
 const store = questionaryStore();
-store.setNmberOfKeyword(props.keywords.length);
 
-const select = (keyword: string, impression: ImpressionType) => {
-  store.select(keyword, impression);
+const select = (
+  questionary: string,
+  keyword: string,
+  impression: ImpressionType
+): void => {
+  store.select(questionary, keyword, impression);
 };
 
 const submit = (): void => {

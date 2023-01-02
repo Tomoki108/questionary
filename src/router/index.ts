@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import QuestionaryContainer from "../components/containers/QuestionaryContainer.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -6,16 +7,17 @@ const router = createRouter({
     {
       path: "/questionary/animal",
       name: "questionary_animal",
-      component: () =>
-        import("../components/containers/QuestionaryContainer.vue"),
-      props: { keywords: ["Dog", "Cat", "Wombat", "Bear"] },
+      component: QuestionaryContainer,
+      props: {
+        questionary: "animal",
+        keywords: ["Dog", "Cat", "Wombat", "Bear"],
+      },
     },
     {
       path: "/questionary/car",
       name: "questionary_car",
-      component: () =>
-        import("../components/containers/QuestionaryContainer.vue"),
-      props: { keywords: ["Mini", "Mercedes", "Toyota"] },
+      component: QuestionaryContainer,
+      props: { questionary: "car", keywords: ["Mini", "Mercedes", "Toyota"] },
     },
   ],
 });

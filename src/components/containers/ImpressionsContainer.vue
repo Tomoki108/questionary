@@ -21,15 +21,20 @@ import { reactive } from "vue";
 import Impression from "../presentationals/Impression.vue";
 import type { Impression as ImpressionType } from "../../types/types";
 
-const emmit = defineEmits<{
-  (e: "selected", impression: ImpressionType): void;
-}>();
+const props = defineProps<{selected: ImpressionType | null}>();
 
 const selectionState = reactive({
   Good: false,
   Flat: false,
   Bad: false,
 });
+if (props.selected != null) {
+  selectionState[props.selected] = true;
+}
+
+const emmit = defineEmits<{
+  (e: "selected", impression: ImpressionType): void;
+}>();
 
 const clicked = (impression: ImpressionType) => {
   selectionState.Good = false;

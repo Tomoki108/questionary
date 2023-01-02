@@ -1,24 +1,36 @@
 import { defineStore } from "pinia";
 import type { Impression } from "../types/types";
 
+export interface Selections {
+  [questionary: string]: {
+    [keyword: string]: Impression;
+  }
+}
+
 export const questionaryStore = defineStore("questionaryStore", {
   state: () => ({
-    numberOfKeyword: 0 as number,
-    selections: {} as {
-      [keyword: string]: Impression;
-    },
+    selections: {
+      'animal': {},
+      'car': {}
+    } as Selections
   }),
-  getters: {
-    isAllSelected: (state): boolean => {
-      return Object.keys(state.selections).length === state.numberOfKeyword;
-    },
-  },
   actions: {
-    setNmberOfKeyword(numberOfKeyword: number) {
-      this.numberOfKeyword = numberOfKeyword;
+    getSelected(questionary: string, keyword: string): Impression | null {
+      if (this.selections[questionary] === undefined) {
+        throw new Error('undifined questionary');
+      }
+
+      return this.selections[questionary][keyword] ?? null;
     },
-    select(keyword: string, impression: Impression) {
-      this.selections[keyword] = impression;
+    isAllSelected(questionary: string, numberOfKeyword: number): boolean {
+      if (this.selections[questionary] === undefined) {
+        throw new Error('undifined questionary');
+      }
+
+      return (Object.keys(this.selections[questionary]).length === numberOfKeyword);
+    },
+    select(questionary: string, keyword: string, impression: Impression): void {
+      this.selections[questionary][keyword] = impression;
     },
   },
 });

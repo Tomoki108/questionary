@@ -22,7 +22,7 @@ import About from "./components/presentationals/About.vue";
     </div>
   </header>
 
-  <RouterView />
+  <RouterView :key="$route.path" />
 </template>
 
 <style scoped>
