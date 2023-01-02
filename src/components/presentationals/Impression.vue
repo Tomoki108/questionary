@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Impression } from "../../types/Impression";
+import type { Impression } from "../../types/types";
 import { computed } from "vue";
 
 export interface Props {

@@ -6,14 +6,14 @@ const router = createRouter({
     {
       path: "/questionary/animal",
       name: "questionary_animal",
-      component: () => import("../views/QuestionaryView.vue"),
-      props: {keywords: [['Dog', 'Cat', 'Wombat', 'Bear']]}
+      component: () => import("../components/containers/QuestionaryContainer.vue"),
+      props: {keywords: ['Dog', 'Cat', 'Wombat', 'Bear']}
     },
     {
       path: "/questionary/car",
       name: "questionary_car",
-      component: () => import("../views/QuestionaryView.vue"),
-      props: {keywords: [['Mini', 'Mercedes', 'Toyota']]}
+      component: () => import("../components/containers/QuestionaryContainer.vue"),
+      props: {keywords: ['Mini', 'Mercedes', 'Toyota']}
     }
   ],
 });

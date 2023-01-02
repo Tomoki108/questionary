@@ -1,28 +1,24 @@
 <template>
-    <p v-for="keyword in keywords">
-        <Keyword :keyword=keyword />
-        <ImpressionsContainer @selected="select(keyword, $event)"/>
-    </p>
-    <SubmitButton :disabled="!store.isAllSelected" @click="submit"/>
+    <main>
+        <p v-for="keyword in keywords">
+            <Keyword :keyword=keyword />
+            <ImpressionsContainer @selected="select(keyword, $event)"/>
+        </p>
+        <SubmitButton :disabled="!store.isAllSelected" @click="submit"/>
+    </main>
 </template>
 
 <script setup lang="ts">
-import Keyword from "../presentationals/keyword.vue";
+import Keyword from "../presentationals/Keyword.vue";
 import ImpressionsContainer from "./ImpressionsContainer.vue";
 import SubmitButton from "../presentationals/SubmitButton.vue";
 import { questionaryStore } from "../../stores/questionaryStore";
-import type { Impression as ImpressionType } from "../../types/Impression";
+import type { Impression as ImpressionType } from "../../types/types";
 
-export interface Props {
-    keywords?: string[]
-}
-withDefaults(
-    defineProps<Props>(),
-    { keywords: () => ['Dog', 'Cat', 'Human', 'Wombat'] }
-);
+const props = defineProps<{keywords: string[]}>();
 
 const store = questionaryStore();
-store.setNmberOfKeyword(4);
+store.setNmberOfKeyword(props.keywords.length);
 
 const select = (keyword: string, impression: ImpressionType) => {
     store.select(keyword, impression);
